@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Voting Website</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div id="voting-page" class="page">
+            <h1>Vote for Your Favorite Image</h1>
+            <div class="images-container">
+                <div class="image-box">
+                    <img src="image1.jpg" alt="Image 1">
+                    <p>Image 1 Caption</p>
+                    <button class="vote-btn" onclick="vote('image1')">Vote for Image 1</button>
+                </div>
+                <div class="image-box">
+                    <img src="image2.jpg" alt="Image 2">
+                    <p>Image 2 Caption</p>
+                    <button class="vote-btn" onclick="vote('image2')">Vote for Image 2</button>
+                </div>
+            </div>
+
+            <a class="to-leaderboard-btn" href="leaderboard.html">Go to Leaderboard</a>
+        </div>
+    </body>
+</html>
