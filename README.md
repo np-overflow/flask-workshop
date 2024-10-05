@@ -3,12 +3,10 @@
 Learning materials for Overflow's Flask workshop (October 2024).
 
 ## Contributing
-
----------------------
 ### Basic Git Workflow
 * clone repo
    ```
-  git clone https://github.com/elphabetsoop/CSS-Assignment.git
+  git clone https://github.com/np-overflow/flask-workshop.git
    ```
 * check status
   ```
