@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Voting Website</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
 
     <body>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <a class="to-leaderboard-btn" href="leaderboard.html">Go to Leaderboard</a>
+            <a class="to-leaderboard-btn" href="/leaderboard">Go to Leaderboard</a>
         </div>
     </body>
 </html>
