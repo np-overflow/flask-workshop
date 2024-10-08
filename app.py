@@ -18,7 +18,7 @@ def home():
     ## TODO: POST scores
     if request.method == "GET":
         topic = get_random_topic()
-        return render_template('index.html')  # GET request
+        return render_template('index.html', topic=topic)  # GET request
     if request.method == "POST":
         return json.dumps({})
 
