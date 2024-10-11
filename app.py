@@ -8,17 +8,23 @@ app = Flask(__name__)
 with open("database.json", "r") as file:
     db = json.load(file)
 
-def get_random_topic():
+def get_random_choices():
     if not db:
         raise Exception("Database not initialized yet")
-    return random.choice(db["topics"])
+    if len(db["choices"]) < 2:
+        raise Exception("Please add more than 2 choices")
+    choice1 = random.choice(db["choices"])
+    choice2 = random.choice(db["choices"])
+    while choice2 == choice1:
+        choice2 = random.choice(db["choices"])
+    return choice1, choice2
 
 @app.route('/', methods=["GET", "POST"])  # #methods=['GET', 'POST'])
 def home():
     ## TODO: POST scores
     if request.method == "GET":
-        topic = get_random_topic()
-        return render_template('index.html', topic=topic)  # GET request
+        choices = get_random_choices()
+        return render_template('index.html', choices=choices)  # GET request
     if request.method == "POST":
         return json.dumps({})
 
