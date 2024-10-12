@@ -1,13 +1,13 @@
 import json
 import random
 import atexit
-from random import choices
 
-from flask import Flask, redirect, url_for, request, render_template, make_response
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-with open("database.example.json", "r") as file:
+## INITIALISE DB ##
+with open("database.json", "r") as file:
     db = json.load(file)
 
 def save_db():
@@ -37,37 +37,23 @@ def find_choice(choice_id):
     else:
         return None # we don't want to raise an exception here and crash the server.
 
-@app.route('/', methods=["GET", "POST"])  # #methods=['GET', 'POST'])
+
+## ROUTING ##
+@app.route('/', methods=["GET", "POST"]) #VOTING PAGE
 def home():
-    ## TODO: POST scores
     if request.method == "GET":
-        choices = get_random_choices()
-        return render_template('index.html', choices=choices)  # GET request
+        ## TODO: # GET request
+        return render_template()
+    
     if request.method == "POST":
-        print(request.json)
-        choice = find_choice(request.json["choice"])
-        if not choice:
-            return "Invalid choice", 400
-        choice["votes"] += 1
-        save_db()
-        return "Success", 200
+        ## TODO: # POST request
+        return
 
 @app.route('/leaderboard')
 def leaderboard():
-    choices = db["choices"]
-    sorted_choices = []
-    for choice in choices:
-        inserted = False
-        for i in range(len(sorted_choices)):
-            if choice["votes"] > sorted_choices[i]["votes"]:
-                sorted_choices.insert(i,choice)
-                inserted = True
-                break
-        if not inserted:
-            sorted_choices.append(choice)
-    return render_template('leaderboard.html', choices = sorted_choices)
+    ## TODO: Display leaderboard
+    return render_template()
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+## TODO: RUN APPLICATION
 
