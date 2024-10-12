@@ -7,7 +7,7 @@ from flask import Flask, redirect, url_for, request, render_template, make_respo
 
 app = Flask(__name__)
 
-with open("database.json", "r") as file:
+with open("database.example.json", "r") as file:
     db = json.load(file)
 
 def save_db():
@@ -54,9 +54,20 @@ def home():
 
 @app.route('/leaderboard')
 def leaderboard():
-    ## TODO: Get scores
-    return render_template('leaderboard.html')
+    choices = db["choices"]
+    sorted_choices = []
+    for choice in choices:
+        inserted = False
+        for i in range(len(sorted_choices)):
+            if choice["votes"] > sorted_choices[i]["votes"]:
+                sorted_choices.insert(i,choice)
+                inserted = True
+                break
+        if not inserted:
+            sorted_choices.append(choice)
+    return render_template('leaderboard.html', choices = sorted_choices)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+

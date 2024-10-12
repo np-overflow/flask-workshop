@@ -19,7 +19,16 @@
                     </tr>
                 </thead>
                 <tbody id="leaderboard-table">
-                    <!-- TODO: Implement functionality for retrieving scores -->
+                    {% for choice in choices %} <!-- iterate through (sorted) choices, retrive id & image path to render -->
+                        <tr>
+                            <td>
+                                <figure>
+                                    <img src="{{ choice.image }}" alt="{{ choice.id }}" width="100" height="100">
+                                    <figcaption>{{ choice.id }}</figcaption>
+                                </figure></td>
+                            <td>{{ choice.votes }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
