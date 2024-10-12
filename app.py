@@ -37,7 +37,6 @@ def leaderboard():
             if not inserted:
                 sorted_choices.append(choice)
     return render_template('leaderboard.html', choices = sorted_choices)
-    return render_template('leaderboard.html')
 
 
 if __name__ == "__main__":
