@@ -19,16 +19,14 @@
                     </tr>
                 </thead>
                 <tbody id="leaderboard-table">
-                    {% for choice in choices %} <!-- iterate through (sorted) choices, retrive id & image path to render -->
+                    <!-- TODO: Add templating to render choices -->
                         <tr>
                             <td>
                                 <figure>
-                                    <img src="{{ choice.image }}" alt="{{ choice.id }}" width="100" height="100">
-                                    <figcaption>{{ choice.id }}</figcaption>
+                                    <img src="PATH_TO_IMG" alt="ALT_TEXT">
                                 </figure></td>
-                            <td>{{ choice.votes }}</td>
+                            <td>NUM_VOTES</td>
                         </tr>
-                    {% endfor %}
                 </tbody>
             </table>
 
