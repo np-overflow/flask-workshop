@@ -55,17 +55,8 @@ def home():
 @app.route('/leaderboard')
 def leaderboard():
     choices = db["choices"]
-    sorted_choices = []
-    for choice in choices:
-        inserted = False
-        for i in range(len(sorted_choices)):
-            if choice["votes"] > sorted_choices[i]["votes"]:
-                sorted_choices.insert(i,choice)
-                inserted = True
-                break
-        if not inserted:
-            sorted_choices.append(choice)
-    return render_template('leaderboard.html', choices = sorted_choices)
+    choices = sorted(choices, key=lambda x: x["votes"], reverse=True)
+    return render_template('leaderboard.html', choices=choices)
 
 
 if __name__ == "__main__":
